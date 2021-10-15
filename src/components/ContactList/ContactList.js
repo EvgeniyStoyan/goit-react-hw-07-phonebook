@@ -4,7 +4,7 @@ import { contactsOperations, contactsSelectors } from 'redux/phonebook';
 
 import s from './ContactList.module.css';
 
-const ContactList = ({ contacts, onDeleteContact }) => {
+const ContactList = ({ contacts, onDeleteContact, loading }) => {
   return (
     <div>
       <ul className={s.contacts_list}>
@@ -19,12 +19,14 @@ const ContactList = ({ contacts, onDeleteContact }) => {
           </li>
         ))}
       </ul>
+      {loading && <h2>Loading...</h2>}
     </div>
   );
 };
 
 const mapStateToProps = state => ({
   contacts: contactsSelectors.getVisibleContacts(state),
+  loading: contactsSelectors.getLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({

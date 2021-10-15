@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { contactsOperations, contactsSelectors } from 'redux/phonebook';
 import s from './ContactForm.module.css';
 
-function ContactForm({ onSubmit, contacts, loading }) {
+function ContactForm({ onSubmit, contacts }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -44,8 +44,8 @@ function ContactForm({ onSubmit, contacts, loading }) {
   };
 
   const reset = () => {
-    setName(name => (name = ''));
-    setNumber(number => (number = ''));
+    setName('');
+    setNumber('');
   };
 
   return (
@@ -83,14 +83,13 @@ function ContactForm({ onSubmit, contacts, loading }) {
         </button>
       </form>
 
-      {loading && <h2>Loading...</h2>}
+      {/* {loading && <h2>Loading...</h2>} */}
     </div>
   );
 }
 
 const mapStateToProps = state => ({
   contacts: contactsSelectors.getContacts(state),
-  loading: contactsSelectors.getLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({

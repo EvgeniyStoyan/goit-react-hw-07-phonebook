@@ -1,23 +1,24 @@
 import ContactList from 'components/ContactList';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
-import { connect } from 'react-redux';
-import { contactsSelectors } from 'redux/phonebook';
 
-function App({ contacts }) {
+export default function App({
+  addContact,
+  filter,
+  changeFilter,
+  getVisibleContacts,
+  deleteContact,
+}) {
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm />
+      <ContactForm onSubmit={addContact} />
       <h2>Contacts</h2>
-      <Filter />
-      {contacts.length > 0 && <ContactList />}
+      <Filter value={filter} onChange={changeFilter} />
+      <ContactList
+        contacts={getVisibleContacts}
+        onDeleteContact={deleteContact}
+      />
     </div>
   );
 }
-
-const mapStateToProps = state => ({
-  contacts: contactsSelectors.getContacts(state),
-});
-
-export default connect(mapStateToProps, null)(App);
