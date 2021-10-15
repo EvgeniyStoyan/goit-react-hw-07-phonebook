@@ -24,9 +24,21 @@ function ContactForm({ onSubmit, contacts, loading }) {
     }
   };
 
+  const addContact = (name, number) => {
+    const contactNames = contacts.map(contact =>
+      contact.name.toLocaleLowerCase(),
+    );
+    const nameEntered = name.toLocaleLowerCase();
+
+    if (contactNames.includes(nameEntered)) {
+      return alert(`${name} is already in contacts`);
+    }
+    onSubmit(name, number);
+  };
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(name, number);
+
+    addContact(name, number);
 
     reset();
   };
