@@ -31,6 +31,16 @@ const loading = createReducer(false, {
   [deleteContactError]: () => false,
 });
 
+// const fetchData = async () => {
+//   try {
+//     dispatch(loaderOn());
+//     dispatch(fetchData());
+//     dispatch(loaderOff());
+//   } catch (err) {
+//     dispatch(loaderOff());
+//   }
+// };
+
 const filter = createReducer('', {
   [changeFilter]: (_, { payload }) => payload,
 });

@@ -2,23 +2,14 @@ import ContactList from 'components/ContactList';
 import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 
-export default function App({
-  addContact,
-  filter,
-  changeFilter,
-  getVisibleContacts,
-  deleteContact,
-}) {
+export default function App() {
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={addContact} />
+      <ContactForm />
       <h2>Contacts</h2>
-      <Filter value={filter} onChange={changeFilter} />
-      <ContactList
-        contacts={getVisibleContacts}
-        onDeleteContact={deleteContact}
-      />
+      <Filter />
+      <ContactList />
     </div>
   );
 }

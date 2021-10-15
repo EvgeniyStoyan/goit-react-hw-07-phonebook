@@ -82,8 +82,6 @@ function ContactForm({ onSubmit, contacts }) {
           Add contact
         </button>
       </form>
-
-      {/* {loading && <h2>Loading...</h2>} */}
     </div>
   );
 }

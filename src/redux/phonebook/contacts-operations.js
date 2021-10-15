@@ -17,7 +17,6 @@ axios.defaults.baseURL = 'http://localhost:3004';
 
 export const fetchContacts = () => async dispatch => {
   dispatch(fetchContactsRequest());
-
   axios
     .get('/contacts')
     .then(({ data }) => dispatch(fetchContactsSuccess(data)))
@@ -46,6 +45,7 @@ export const deleteContact = contactId => dispatch => {
     .then(() => dispatch(deleteContactSuccess(contactId)))
     .catch(error => dispatch(deleteContactError(error)));
 };
+
 // export const fetchContacts = () => async dispatch => {
 //   dispatch(fetchContactsRequest());
 
@@ -70,3 +70,5 @@ export const deleteContact = contactId => dispatch => {
 //     }
 //   },
 // );
+
+//
